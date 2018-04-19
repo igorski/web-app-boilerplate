@@ -3,7 +3,7 @@
 // not loaded on-demand (see TemplateService)
 
 const Templates = {
-    FOO: require("ejs-compiled-loader!../../assets/templates/template.ejs")
+    FOO: require( "ejs-compiled-loader!../../assets/templates/template.ejs" )
 };
 
 export { Templates };

@@ -1,9 +1,8 @@
 "use strict";
 
-const chai = require( "chai" );
+const chai  = require( "chai" );
 
 import * as TemplateService from '../../src/services/TemplateService.js';
-import { Templates } from '../../src/config/Config.js';
 
 describe( "TemplateService", () =>
 {
@@ -14,6 +13,10 @@ describe( "TemplateService", () =>
           expect = chai.expect;
 
     let container;
+
+    // data mocks
+    const templateBody  = "<h1>Mock template</h1>";
+    const template = () => templateBody;
     const data = {
         title: "foo"
     };
@@ -42,8 +45,11 @@ describe( "TemplateService", () =>
             container.innerHMTL.length === 0,
             "expected on HTML content in the container prior to injection"
         );
+
+        const template = () => "<h1>Foo</h1>";
+
         assert.ok(
-            TemplateService.inject( Templates.FOO, container, data ),
+            TemplateService.inject( template, container, data ),
             "expected not to fail as a valid template was passed"
         );
     });
